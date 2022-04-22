@@ -17,6 +17,8 @@ import {
 	MdPlaylistAdd,
 	MdFavorite,
 } from "react-icons/md"
+import { usePlaylist } from '../lib/hooks'
+
 
 const navMenu = [
 	{
@@ -49,17 +51,16 @@ const musicMenu = [
 	},
 ]
 
-const playlists = new Array(30).fill(1).map((_, i) => `Playlist ${i + 1}`)
-
 const Sidebar = () => {
-  return (
+	const { playlists } = usePlaylist()
+	return (
 		<Box width="100%" height="calc(100vh - 100px)" bg="black" paddingX="5px" color="grey">
 			<Box paddingY="20px" height="100%">
 
 				<Box width="120px" marginBottom="20px" paddingX="20px">
-					<NextImage src="/logo.svg" height="60px" width="120px"/>
+					<NextImage src="/logo.svg" height="60px" width="120px" />
 				</Box>
-				
+
 				{/* TODO: Break menu list out to component (1/2) */}
 				<Box marginBottom="20px">
 					<List spacing={2}>
@@ -68,11 +69,11 @@ const Sidebar = () => {
 								<LinkBox>
 									<NextLink href={menu.route} passHref>
 										<LinkOverlay>
-											<ListIcon as={menu.icon} color="white" marginRight="20px"/>
+											<ListIcon as={menu.icon} color="white" marginRight="20px" />
 											{menu.name}
 										</LinkOverlay>
 									</NextLink>
-								</LinkBox>	
+								</LinkBox>
 							</ListItem>
 						))}
 					</List>
@@ -100,15 +101,15 @@ const Sidebar = () => {
 
 				<Box height="66%" overflowY="auto" paddingY="20px">
 					<List spacing={2}>
-						{playlists.map(playlist => (
-							<ListItem paddingX="20px" key={playlist}>
+						{playlists.map((playlist) => (
+							<ListItem paddingX="20px" key={playlist.id}>
 								<LinkBox>
 									<NextLink href="/" passHref>
 										<LinkOverlay>
-											{playlist}
-										</LinkOverlay>	
+											{playlist.name}
+										</LinkOverlay>
 									</NextLink>
-								</LinkBox>	
+								</LinkBox>
 							</ListItem>
 						))}
 					</List>
