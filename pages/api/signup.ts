@@ -4,6 +4,7 @@ import cookie from 'cookie'
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../lib/prisma'
 
+// Access with httpie in terminal with `http :3000/api/signup user=a@a.com password=whatever`
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const salt = bcrypt.genSaltSync()
 	const { email, password } = req.body
