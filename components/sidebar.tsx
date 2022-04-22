@@ -54,7 +54,13 @@ const musicMenu = [
 const Sidebar = () => {
 	const { playlists } = usePlaylist()
 	return (
-		<Box width="100%" height="calc(100vh - 100px)" bg="black" paddingX="5px" color="grey">
+		<Box
+			width="100%"
+			height="calc(100vh - 100px)"
+			bg="black"
+			paddingX="5px"
+			color="grey"
+		>
 			<Box paddingY="20px" height="100%">
 
 				<Box width="120px" marginBottom="20px" paddingX="20px">
