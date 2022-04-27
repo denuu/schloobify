@@ -37,12 +37,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Once we add new fields to schema (`schema.prisma`), we then ensure our seed (`seed.ts`) is updated to create those fields with new entries. Then run the migration to update the DB data with:
 
-```npx prisma migrade dev```
-
-If modifying less structural values, we can always reset the db migration with:
-
-```npx prisma migrate reset```
+```npx prisma migrate dev```
 
 and when committing new changes before migration, we must push changes via:
 
 ```npx prisma db push```
+
+After modifying less structural values, we should always reset the db migration with:
+
+```npx prisma migrate reset```
