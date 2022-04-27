@@ -1,6 +1,6 @@
 module.exports = {
   extends: ["next/core-web-vitals", "airbnb", "airbnb/hooks", "prettier"],
-  plugins: ["react", "@typescript-eslint", "prettier"],
+  plugins: ["react", "@typescript-eslint"],
   env: {
     browser: true,
     es2021: true,
@@ -39,6 +39,10 @@ module.exports = {
         unnamedComponents: "arrow-function",
       },
     ],
-    "prettier/prettier": "warn",
+    "semi": "never",
+    "quotes": [
+      "error",
+      "single"
+    ]
   },
 };
