@@ -1,8 +1,39 @@
+import GradientLayout from '../../components/gradientLayout'
+import SongTable from '../../components/songsTable'
 import { validateToken } from '../../lib/auth'
 import prisma from '../../lib/prisma'
 
+// Random colour for playlists
+const getBGColor = (id) => {
+  const colors = [
+    'red',
+    'green',
+    'blue',
+    'orange',
+    'purple',
+    'grey',
+    'teal',
+    'yellow',
+  ]
+
+  return colors[id - 1] || colors[Math.floor(Math.random() * colors.length)]
+}
+
 const Playlist = ({ playlist }) => {
-  return <div>{playlist.name}</div>
+  const color = getBGColor(playlist.id)
+  return (
+    <GradientLayout
+      color={color}
+      // children={undefined}
+      image={`https://picsum.photos/400?random=${playlist.id}`}
+      subtitle="playlist"
+      title={playlist.name}
+      description={`${playlist.songs.length} songs`}
+      roundImage={false}
+    >
+      <SongTable />
+    </GradientLayout>
+  )
 }
 
 export const getServerSideProps = async ({ query, req }) => {
