@@ -31,7 +31,7 @@ const Playlist = ({ playlist }) => {
       description={`${playlist.songs.length} songs`}
       roundImage={false}
     >
-      <SongTable />
+      <SongTable songs={playlist.songs}/>
     </GradientLayout>
   )
 }
