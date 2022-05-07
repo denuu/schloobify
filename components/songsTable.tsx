@@ -31,11 +31,11 @@ const SongTable = ({ songs }) => {
             </Thead>
             <Tbody>
               {songs.map((song, i) => {
-                <Tr 
+                <Tr
                   sx={{
                     transition: 'all .3s',
                     '&:hover': {
-                      bg: 'rgba(255, 255, 255, 0.1)'
+                      bg: 'rgba(255, 255, 255, 0.1)',
                     },
                   }}
                   key={song.id}
@@ -44,7 +44,7 @@ const SongTable = ({ songs }) => {
                   <Td>{i + 1}</Td>
                   <Td>{song.name}</Td>
                   {/* TODO: createAt -> createdAt */}
-                  <Td>{song.createAt.toString()}</Td> 
+                  <Td>{song.createdAt.toString()}</Td>
                   <Td>{song.duration}</Td>
                 </Tr>
               })}

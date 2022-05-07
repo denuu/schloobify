@@ -13,7 +13,7 @@ datasource db {
 
 model User {
   id        Int        @id @default(autoincrement())
-  createAt  DateTime   @default(now())
+  createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   email     String     @unique
   firstName String
@@ -24,7 +24,7 @@ model User {
 
 model Song {
   id        Int        @id @default(autoincrement())
-  createAt  DateTime   @default(now())
+  createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   name      String
   artist    Artist     @relation(fields: [artistId], references: [id])
@@ -36,7 +36,7 @@ model Song {
 
 model Artist {
   id        Int      @id @default(autoincrement())
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   songs     Song[]
   name      String   @unique
@@ -44,7 +44,7 @@ model Artist {
 
 model Playlist {
   id        Int      @id @default(autoincrement())
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String
   songs     Song[]
