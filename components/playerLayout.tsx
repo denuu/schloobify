@@ -1,6 +1,7 @@
 // NOTE: Chakra UI allows for css properties as props on components.
 import { Box } from '@chakra-ui/layout'
 import Sidebar from '../components/sidebar'
+import PlayerBar from './playerBox'
 
 const PlayerLayout = ({ children }) => {
 	return (
@@ -14,7 +15,7 @@ const PlayerLayout = ({ children }) => {
 				</Box>
 			</Box>
 			<Box position="absolute" left="0" bottom="0">
-				player
+				<PlayerBar />
 			</Box>
 		</Box>
 	)
