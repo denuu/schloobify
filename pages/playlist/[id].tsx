@@ -37,8 +37,8 @@ const Playlist = ({ playlist }) => {
 }
 
 export const getServerSideProps = async ({ query, req }) => {
+  // Get valid user data, else redirect to signin
   let user
-
   try {
     user = validateToken(req.cookies.SCHLOOBIFY_ACCESS_TOKEN)
   } catch (e) {
