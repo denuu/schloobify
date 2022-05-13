@@ -32,7 +32,9 @@ const Player = ({ songs, activeSong }) => {
 
   return (
     <Box>
-      <Box>{/* <ReactHowler /> */}</Box>
+      <Box>
+        <ReactHowler playing={activeSong?.url} src={activeSong?.url} />
+      </Box>
       <Center color="grey.600">
         <ButtonGroup>
           <IconButton
@@ -49,22 +51,25 @@ const Player = ({ songs, activeSong }) => {
             fontSize="24px"
             icon={<MdSkipPrevious />}
           />
-          <IconButton
-            outline="none"
-            variant="link"
-            aria-label="play"
-            fontSize="40px"
-            color="white"
-            icon={<MdOutlinePlayCircleFilled />}
-          />
-          <IconButton
-            outline="none"
-            variant="link"
-            aria-label="pause"
-            fontSize="40px"
-            color="white"
-            icon={<MdOutlinePauseCircleFilled />}
-          />
+          {playing ? (
+            <IconButton
+              outline="none"
+              variant="link"
+              aria-label="play"
+              fontSize="40px"
+              color="white"
+              icon={<MdOutlinePlayCircleFilled />}
+            />
+          ) : (
+            <IconButton
+              outline="none"
+              variant="link"
+              aria-label="pause"
+              fontSize="40px"
+              color="white"
+              icon={<MdOutlinePauseCircleFilled />}
+            />
+          )}
           <IconButton
             outline="none"
             variant="link"
