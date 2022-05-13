@@ -22,7 +22,14 @@ import {
 } from 'react-icons/md'
 import { useStoreActions } from 'easy-peasy'
 
-const Player = () => {
+const Player = ({ songs, activeSong }) => {
+  const [playing, setPlaying] = useState(true)
+  const [index, setIndex] = useState(0) // active song index
+  const [seek, setSeek] = useState(0.0) // seek position on progress bar
+  const [repeat, setRepeat] = useState(false)
+  const [shuffle, setShuffle] = useState(false)
+  const [duration, setDuration] = useState(0.0)
+
   return (
     <Box>
       <Box>{/* <ReactHowler /> */}</Box>
