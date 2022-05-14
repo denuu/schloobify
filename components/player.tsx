@@ -30,11 +30,21 @@ const Player = ({ songs, activeSong }) => {
   const [shuffle, setShuffle] = useState(false)
   const [duration, setDuration] = useState(0.0)
 
+  const setPlayState = (value) => {
+    setPlaying(value)
+  }
+
+  const onShuffle = () => {
+    setShuffle((state) => !state)
+  }
+
+  const onRepeat = () => {
+    setRepeat((state) => !state)
+  }
+
   return (
     <Box>
-      <Box>
-        <ReactHowler playing={activeSong?.url} src={activeSong?.url} />
-      </Box>
+      <Box>{/* <ReactHowler playing={playing} src={activeSong?.url} /> */}</Box>
       <Center color="grey.600">
         <ButtonGroup>
           <IconButton
@@ -42,6 +52,8 @@ const Player = ({ songs, activeSong }) => {
             variant="link"
             aria-label="shuffle"
             fontSize="24px"
+            color={shuffle ? 'white' : 'grey.600'}
+            onClick={onShuffle}
             icon={<MdShuffle />}
           />
           <IconButton
@@ -59,6 +71,7 @@ const Player = ({ songs, activeSong }) => {
               fontSize="40px"
               color="white"
               icon={<MdOutlinePlayCircleFilled />}
+              onClick={() => setPlayState(false)}
             />
           ) : (
             <IconButton
@@ -68,6 +81,7 @@ const Player = ({ songs, activeSong }) => {
               fontSize="40px"
               color="white"
               icon={<MdOutlinePauseCircleFilled />}
+              onClick={() => setPlayState(true)}
             />
           )}
           <IconButton
@@ -82,6 +96,8 @@ const Player = ({ songs, activeSong }) => {
             variant="link"
             aria-label="ship next"
             fontSize="24px"
+            color={repeat ? 'white' : 'grey.600'}
+            onClick={onRepeat}
             icon={<MdOutlineRepeat />}
           />
         </ButtonGroup>
