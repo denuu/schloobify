@@ -67,20 +67,20 @@ const Player = ({ songs, activeSong }) => {
             <IconButton
               outline="none"
               variant="link"
-              aria-label="play"
+              aria-label="pause"
               fontSize="40px"
               color="white"
-              icon={<MdOutlinePlayCircleFilled />}
+              icon={<MdOutlinePauseCircleFilled />}
               onClick={() => setPlayState(false)}
             />
           ) : (
             <IconButton
               outline="none"
               variant="link"
-              aria-label="pause"
+              aria-label="play"
               fontSize="40px"
               color="white"
-              icon={<MdOutlinePauseCircleFilled />}
+              icon={<MdOutlinePlayCircleFilled />}
               onClick={() => setPlayState(true)}
             />
           )}
