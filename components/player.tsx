@@ -21,6 +21,7 @@ import {
   MdOutlineRepeat,
 } from 'react-icons/md'
 import { useStoreActions } from 'easy-peasy'
+import { formatTime } from '../lib/formatters'
 
 const Player = ({ songs, activeSong }) => {
   const [playing, setPlaying] = useState(true)
@@ -177,7 +178,7 @@ const Player = ({ songs, activeSong }) => {
             </RangeSlider>
           </Box>
           <Box width="10%" textAlign="right">
-            <Text fontSize="xs">6:66</Text>
+            <Text fontSize="xs">{formatTime(duration)}</Text>
           </Box>
         </Flex>
       </Box>
