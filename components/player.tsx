@@ -33,6 +33,22 @@ const Player = ({ songs, activeSong }) => {
   const [duration, setDuration] = useState(0.0)
   const soundRef = useRef(null) // Reference for react howler
 
+  useEffect(() => {
+    let timerId
+
+    if (playing && !isSeeking) {
+      const f = () => {
+        setSeek(soundRef.current.seek()) // Bind current howler seek value to seek state.
+        timerId = requestAnimationFrame(f)
+      }
+
+      timerId = requestAnimationFrame(f)
+      return () => cancelAnimationFrame(timerId)
+    }
+
+    cancelAnimationFrame(timerId)
+  }, [playing, isSeeking])
+
   const setPlayState = (value) => {
     setPlaying(value)
   }
@@ -157,7 +173,7 @@ const Player = ({ songs, activeSong }) => {
       <Box color="grey.600">
         <Flex justify="center">
           <Box>
-            <Text fontSize="xs">0:00</Text>
+            <Text fontSize="xs">{formatTime(seek)}</Text>
           </Box>
           <Box width="80%">
             <RangeSlider
