@@ -7,7 +7,7 @@ import { useStoreActions } from 'easy-peasy'
 
 const SongTable = ({ songs }) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
-  const setActiveSong = useStoreActions((store: any) => store.changeActiveSongs)
+  const setActiveSong = useStoreActions((store: any) => store.changeActiveSong)
 
   const handlePlay = (activeSong?) => {
     setActiveSong(activeSong || songs[0])
