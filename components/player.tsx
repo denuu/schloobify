@@ -20,18 +20,22 @@ import {
   MdOutlinePauseCircleFilled,
   MdOutlineRepeat,
 } from 'react-icons/md'
-import { useStoreActions } from 'easy-peasy'
+import { useStore, useStoreActions } from 'easy-peasy'
 import { formatTime } from '../lib/formatters'
 
 const Player = ({ songs, activeSong }) => {
   const [playing, setPlaying] = useState(true)
-  const [index, setIndex] = useState(0) // active song index
+  const [index, setIndex] = useState(
+    songs.findIndex((song) => song.id === activeSong.id)
+  ) // active song index
   const [seek, setSeek] = useState(0.0) // seek position on progress bar
   const [isSeeking, setIsSeeking] = useState(false)
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
   const [duration, setDuration] = useState(0.0)
   const soundRef = useRef(null) // Reference for react howler
+  const repeatRef = useRef(repeat) // Avoids closure because opts out of render cycle
+  const setActiveSong = useStoreActions((state: any) => state.changeActiveSong)
 
   useEffect(() => {
     let timerId
@@ -48,6 +52,14 @@ const Player = ({ songs, activeSong }) => {
 
     cancelAnimationFrame(timerId)
   }, [playing, isSeeking])
+
+  useEffect(() => {
+    setActiveSong(songs[index])
+  }, [index, setActiveSong, songs])
+
+  useEffect(() => {
+    repeatRef.current = repeat
+  }, [repeat])
 
   const setPlayState = (value) => {
     setPlaying(value)
