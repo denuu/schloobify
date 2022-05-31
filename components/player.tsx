@@ -196,7 +196,7 @@ const Player = ({ songs, activeSong }) => {
               max={duration ? +duration.toFixed(2) : 0}
               onChange={onSeek}
               value={[seek]}
-              onChangeState={() => setIsSeeking(true)}
+              onChangeStart={() => setIsSeeking(true)}
               onChangeEnd={() => setIsSeeking(false)}
             >
               <RangeSliderTrack bg="grey.800">
