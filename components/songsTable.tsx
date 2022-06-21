@@ -8,14 +8,14 @@ import { useStoreActions, useStoreState } from 'easy-peasy'
 const SongTable = ({ songs }) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
   const setActiveSong = useStoreActions((store: any) => store.changeActiveSong)
+
+  // setActiveSong changes this but one on initial render.
   const activeSong = useStoreState((state: any) => state.activeSong)
 
   const handlePlay = (activeSong?) => {
     setActiveSong(activeSong || songs[0])
     playSongs(songs)
   }
-
-  console.log(activeSong)
 
   return (
     <Box bg="transparent" color="white">
@@ -57,7 +57,7 @@ const SongTable = ({ songs }) => {
                   onClick={() => handlePlay(song)}
                 >
                   <Td>{i + 1}</Td>
-                  <Td color={activeSong.id === song.id ? 'green' : 'white'}>
+                  <Td color={activeSong?.id === song?.id ? 'green' : 'white'}>
                     {song.name}
                   </Td>
                   <Td>{formatDate(song.createdAt)}</Td>
