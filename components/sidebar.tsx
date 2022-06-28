@@ -9,6 +9,7 @@ import {
   Center,
   LinkBox,
   LinkOverlay,
+  Text,
 } from '@chakra-ui/layout'
 import {
   MdHome,
@@ -61,8 +62,12 @@ const Sidebar = () => {
       color="grey"
     >
       <Box paddingY="20px" height="100%">
-        <Box width="120px" marginBottom="20px" paddingX="20px">
-          <NextImage src="/logo.svg" height="60px" width="120px" />
+        <Box width="100%" marginBottom="20px" paddingX="20px">
+          {/* <Box width="120px" marginBottom="20px" paddingX="20px"> */}
+          {/* <NextImage src="/logo.svg" height="60px" width="120px" /> */}
+          <Text fontSize="2xl" fontWeight="bold" color="white">
+            {`Schloob)))`}
+          </Text>
         </Box>
 
         {/* TODO: Break menu list out to component (1/2) */}

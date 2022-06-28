@@ -55,13 +55,17 @@ const SongTable = ({ songs }) => {
                   key={song.id}
                   cursor="pointer"
                   onClick={() => handlePlay(song)}
+                  color={activeSong?.id === song?.id ? 'black' : 'white'}
+                  backgroundColor={
+                    activeSong?.id === song?.id ? 'white' : 'clear'
+                  }
                 >
-                  <Td>{i + 1}</Td>
-                  <Td color={activeSong?.id === song?.id ? 'green' : 'white'}>
-                    {song.name}
-                  </Td>
+                  <Td borderRadius="8px 0 0 8px">{i + 1}</Td>
+                  <Td>{song.name}</Td>
                   <Td>{formatDate(song.createdAt)}</Td>
-                  <Td>{formatTime(song.duration)}</Td>
+                  <Td borderRadius="0 8px 8px 0">
+                    {formatTime(song.duration)}
+                  </Td>
                 </Tr>
               ))}
             </Tbody>

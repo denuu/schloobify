@@ -29,7 +29,9 @@ const GradientLayout = ({
           <Text fontSize="x-small" fontWeight="bold" casing="uppercase">
             {subtitle}
           </Text>
-          <Text fontSize="6xl">{title}</Text>
+          <Text fontSize="7xl" fontWeight="bold">
+            {title}
+          </Text>
           <Text fontSize="x-small">{description}</Text>
         </Box>
       </Flex>

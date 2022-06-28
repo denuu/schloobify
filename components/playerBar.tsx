@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import Player from './player'
+import PlayerVolume from './playerVolume'
 import { useStoreState } from 'easy-peasy'
 
 const PlayerBar = () => {
@@ -19,7 +20,7 @@ const PlayerBar = () => {
           {activeSong ? <Player songs={songs} activeSong={activeSong} /> : null}
         </Box>
         <Box color="white" width="30%">
-          blah
+          <PlayerVolume />
         </Box>
       </Flex>
     </Box>
