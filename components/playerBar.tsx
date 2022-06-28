@@ -20,7 +20,7 @@ const PlayerBar = () => {
           {activeSong ? <Player songs={songs} activeSong={activeSong} /> : null}
         </Box>
         <Box color="white" width="30%">
-          <PlayerVolume />
+          {activeSong ? <PlayerVolume /> : null}
         </Box>
       </Flex>
     </Box>
