@@ -2,16 +2,11 @@ import {
   Box,
   Flex,
   IconButton,
-  RangeSlider,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-  RangeSliderTrack,
   Slider,
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
 } from '@chakra-ui/react'
-import ReactHowler from 'react-howler' // Audio interface library for React
 import { useEffect } from 'react'
 import {
   MdVolumeDown,
@@ -19,28 +14,17 @@ import {
   MdVolumeOff,
   MdVolumeUp,
 } from 'react-icons/md'
+import { useStoreActions } from 'easy-peasy'
 
-const PlayerVolume = () => {
-  const [volume, setVolume] = useState(100)
-  const volumeRef = useRef(null) // Reference for React Howler
+const PlayerVolume = ({ volume }) => {
+  const setVolume = useStoreActions((state: any) => state.changeVolume)
 
-  // useEffect(() => {})
-
-  const onVolume = (e) => {
-    setVolume(parseFloat(e[0]))
-    volumeRef.current.seek(e[0])
-  }
+  useEffect(() => {
+    setVolume(volume)
+  }, [setVolume, volume])
 
   return (
     <Box>
-      <Box>
-        <ReactHowler
-          // playing={playing}
-          // src={activeSong?.url}
-          ref={volumeRef}
-          onVolume={onVolume}
-        />
-      </Box>
       <Flex justify="flex-end" align="center">
         <IconButton
           outline="none"
@@ -52,32 +36,18 @@ const PlayerVolume = () => {
           icon={<MdVolumeDown />}
         />
 
-        {/* <RangeSlider
-          aria-label={['0%', '100%']}
-          step={0.1}
-          min={0}
-          max={100}
-          id="volume-range"
-          // value={}
-          // onChange={onSeek}
-          // onChangeStart={() => setIsSeeking(true)}
-          // onChangeEnd={() => setIsSeeking(false)}
-          width="100px"
-        >
-          <RangeSliderTrack bg="grey.800">
-            <RangeSliderFilledTrack bg="grey.600" />
-          </RangeSliderTrack>
-          <RangeSliderThumb index={0} />
-        </RangeSlider> */}
-
         <Slider
           aria-label="volume-slider"
           defaultValue={1.0}
-          step={0.1}
+          step={0.05}
           min={0.0}
           max={1.0}
           id="volume-slider"
           width="100px"
+          value={volume}
+          onChange={(e) => {
+            setVolume(parseFloat(e))
+          }}
         >
           <SliderTrack bg="grey.800">
             <SliderFilledTrack bg="green.300" />

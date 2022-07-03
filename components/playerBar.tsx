@@ -6,6 +6,7 @@ import { useStoreState } from 'easy-peasy'
 const PlayerBar = () => {
   const songs = useStoreState((state: any) => state.activeSongs)
   const activeSong = useStoreState((state: any) => state.activeSong)
+  const volume = useStoreState((state: any) => state.volume)
 
   return (
     <Box height="108px" width="100vw" bg="grey.900" padding="10px">
@@ -17,10 +18,12 @@ const PlayerBar = () => {
           </Box>
         ) : null}
         <Box color="white" width="40%">
-          {activeSong ? <Player songs={songs} activeSong={activeSong} /> : null}
+          {activeSong ? (
+            <Player songs={songs} activeSong={activeSong} volume={volume} />
+          ) : null}
         </Box>
         <Box color="white" width="30%">
-          {activeSong ? <PlayerVolume /> : null}
+          {activeSong ? <PlayerVolume volume={volume} /> : null}
         </Box>
       </Flex>
     </Box>

@@ -20,10 +20,10 @@ import {
   MdOutlinePauseCircleFilled,
   MdOutlineRepeat,
 } from 'react-icons/md'
-import { useStore, useStoreActions } from 'easy-peasy'
+import { useStoreActions } from 'easy-peasy'
 import { formatTime } from '../lib/formatters'
 
-const Player = ({ songs, activeSong }) => {
+const Player = ({ volume, songs, activeSong }) => {
   const [playing, setPlaying] = useState(true)
   const [index, setIndex] = useState(
     songs.findIndex((song) => song.id === activeSong.id)
@@ -33,8 +33,10 @@ const Player = ({ songs, activeSong }) => {
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
   const [duration, setDuration] = useState(0.0)
-  const soundRef = useRef(null) // Reference for react howler
+
+  const soundRef = useRef(null) // Reference for React Howler
   const repeatRef = useRef(repeat) // Avoids closure because opts out of render cycle
+
   const setActiveSong = useStoreActions((state: any) => state.changeActiveSong)
 
   useEffect(() => {
@@ -120,7 +122,7 @@ const Player = ({ songs, activeSong }) => {
           ref={soundRef}
           onLoad={onLoad}
           onEnd={onEnd}
-          // NOTE: Can accept volume prop for volume slider use!
+          volume={volume} // NOTE: Can accept volume prop for volume slider use!
         />
       </Box>
       <Center color="grey.600">
