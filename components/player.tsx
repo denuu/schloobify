@@ -184,10 +184,20 @@ const Player = ({ songs, activeSong }) => {
       </Center>
       <Box color="grey.600">
         <Flex justify="center">
-          <Box>
+          <Box
+            width="10%"
+            display="inline-flex"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Text fontSize="xs">{formatTime(seek)}</Text>
           </Box>
-          <Box width="80%">
+          <Box
+            width="80%"
+            display="inline-flex"
+            justifyContent="center"
+            alignItems="center"
+          >
             <RangeSlider
               aria-label={['min', 'max']}
               step={0.1}
@@ -205,7 +215,12 @@ const Player = ({ songs, activeSong }) => {
               <RangeSliderThumb index={0} />
             </RangeSlider>
           </Box>
-          <Box width="10%" textAlign="right">
+          <Box
+            width="10%"
+            display="inline-flex"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Text fontSize="xs">{formatTime(duration)}</Text>
           </Box>
         </Flex>

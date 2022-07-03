@@ -8,7 +8,7 @@ const PlayerBar = () => {
   const activeSong = useStoreState((state: any) => state.activeSong)
 
   return (
-    <Box height="100px" width="100vw" bg="grey.900" padding="10px">
+    <Box height="108px" width="100vw" bg="grey.900" padding="10px">
       <Flex align="center">
         {activeSong ? (
           <Box padding="20px" color="white" width="30%">
