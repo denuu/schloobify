@@ -4,7 +4,7 @@ import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { formatDate, formatTime } from '../lib/formatters'
 import { useStoreActions, useStoreState } from 'easy-peasy'
-import { MdFavorite, MdOutlineFavorite } from 'react-icons/md'
+import { MdFavorite } from 'react-icons/md'
 
 const SongTable = ({ songs }) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
@@ -39,6 +39,7 @@ const SongTable = ({ songs }) => {
                 <Th>#</Th>
                 <Th>Title</Th>
                 <Th>Date Added</Th>
+                <Th width="20px"></Th>
                 <Th>
                   <AiOutlineClockCircle />
                 </Th>
@@ -50,7 +51,8 @@ const SongTable = ({ songs }) => {
                   sx={{
                     transition: 'all .3s',
                     '&:hover': {
-                      bg: 'rgba(255, 255, 255, 0.1)',
+                      bg: 'rgba(255, 255, 255, 0.75)',
+                      color: 'grey.800',
                     },
                   }}
                   key={song.id}
@@ -64,11 +66,10 @@ const SongTable = ({ songs }) => {
                   <Td borderRadius="8px 0 0 8px">{i + 1}</Td>
                   <Td>{song.name}</Td>
                   <Td>{formatDate(song.createdAt)}</Td>
-                  <Td borderRadius="0 8px 8px 0">
-                    {/* <Icon as={MdOutlineFavorite} color="white" /> */}
+                  <Td>
                     <IconButton
                       icon={
-                        <MdOutlineFavorite
+                        <MdFavorite
                           fill="rgba(255, 255, 255, 0.1)"
                           size="18px"
                         />
@@ -94,6 +95,8 @@ const SongTable = ({ songs }) => {
                       }}
                       // onClick={() => handlePlay()}
                     />
+                  </Td>
+                  <Td borderRadius="0 8px 8px 0">
                     {formatTime(song.duration)}
                   </Td>
                 </Tr>

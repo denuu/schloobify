@@ -22,3 +22,13 @@ export const usePlaylist = () => {
 		isError: error,
 	}
 }
+
+export const useFavourites = () => {
+	const { data, error } = useSWR('/favourites', fetcher)
+
+	return {
+		favourites: (data as any) || [],
+		isLoading: !data && !error,
+		isError: error,
+	}
+}
