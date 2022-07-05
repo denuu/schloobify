@@ -4,6 +4,7 @@ import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { formatDate, formatTime } from '../lib/formatters'
 import { useStoreActions, useStoreState } from 'easy-peasy'
+import { MdFavorite, MdOutlineFavorite } from 'react-icons/md'
 
 const SongTable = ({ songs }) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
@@ -64,6 +65,35 @@ const SongTable = ({ songs }) => {
                   <Td>{song.name}</Td>
                   <Td>{formatDate(song.createdAt)}</Td>
                   <Td borderRadius="0 8px 8px 0">
+                    {/* <Icon as={MdOutlineFavorite} color="white" /> */}
+                    <IconButton
+                      icon={
+                        <MdOutlineFavorite
+                          fill="rgba(255, 255, 255, 0.1)"
+                          size="18px"
+                        />
+                      }
+                      aria-label="favourite"
+                      size="sm"
+                      variant="ghost"
+                      isRound
+                      sx={{
+                        '&:hover': {
+                          background: 'transparent',
+                          svg: {
+                            fill: 'red.300',
+                            opacity: 0.6,
+                          },
+                        },
+                        '&:focus': {
+                          background: 'transparent',
+                          svg: {
+                            fill: 'red',
+                          },
+                        },
+                      }}
+                      // onClick={() => handlePlay()}
+                    />
                     {formatTime(song.duration)}
                   </Td>
                 </Tr>
