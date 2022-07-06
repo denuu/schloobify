@@ -5,6 +5,7 @@ import { AiOutlineClockCircle } from 'react-icons/ai'
 import { formatDate, formatTime } from '../lib/formatters'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import { MdFavorite } from 'react-icons/md'
+import { prisma } from '@prisma/client'
 
 const SongTable = ({ songs }) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
@@ -17,6 +18,10 @@ const SongTable = ({ songs }) => {
     setActiveSong(activeSong || songs[0])
     playSongs(songs)
   }
+
+  // const handleFavourite = () => {
+
+  // }
 
   return (
     <Box bg="transparent" color="white">
@@ -62,6 +67,7 @@ const SongTable = ({ songs }) => {
                   backgroundColor={
                     activeSong?.id === song?.id ? 'white' : 'clear'
                   }
+                  // {...song}
                 >
                   <Td borderRadius="8px 0 0 8px">{i + 1}</Td>
                   <Td>{song.name}</Td>
@@ -94,6 +100,16 @@ const SongTable = ({ songs }) => {
                         },
                       }}
                       // onClick={() => handlePlay()}
+                      onClick={async () => {
+                        console.log(song.id)
+                        // const favouriteSong = await prisma.favourites.create({
+                        //   data: {
+                        //     songId: song.id,
+                        //     song: song,
+                        //     createdAt: Date.now()
+                        //   },
+                        // })
+                      }}
                     />
                   </Td>
                   <Td borderRadius="0 8px 8px 0">
