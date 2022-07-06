@@ -23,7 +23,7 @@ export const usePlaylist = () => {
 	}
 }
 
-export const useFavourites = () => {
+export const useFavourite = () => {
 	const { data, error } = useSWR('/favourite', fetcher)
 
 	return {
