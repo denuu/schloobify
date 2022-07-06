@@ -24,7 +24,7 @@ export const usePlaylist = () => {
 }
 
 export const useFavourites = () => {
-	const { data, error } = useSWR('/favourites', fetcher)
+	const { data, error } = useSWR('/favourite', fetcher)
 
 	return {
 		favourites: (data as any) || [],

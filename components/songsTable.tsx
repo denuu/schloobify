@@ -102,7 +102,7 @@ const SongTable = ({ songs }) => {
                       // onClick={() => handlePlay()}
                       onClick={async () => {
                         console.log(song.id)
-                        // const favouriteSong = await prisma.favourites.create({
+                        // const favouriteSong = await prisma.favourite.create({
                         //   data: {
                         //     songId: song.id,
                         //     song: song,
