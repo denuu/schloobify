@@ -6,6 +6,8 @@ import { formatDate, formatTime } from '../lib/formatters'
 import { useStoreActions, useStoreState } from 'easy-peasy'
 import { MdFavorite } from 'react-icons/md'
 import { prisma } from '@prisma/client'
+import React from 'react'
+import { useMe } from '../lib/hooks'
 
 const SongTable = ({ songs }) => {
   const playSongs = useStoreActions((store: any) => store.changeActiveSongs)
@@ -19,9 +21,20 @@ const SongTable = ({ songs }) => {
     playSongs(songs)
   }
 
-  // const handleFavourite = () => {
-
-  // }
+  const handleFavourite = async (e: React.SyntheticEvent, song) => {
+    e.preventDefault()
+    try {
+      const body = { songId: song.id }
+      await fetch('/api/favourite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      // await Router.push('/') // Need to navigate to see fav?
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <Box bg="transparent" color="white">
@@ -99,17 +112,7 @@ const SongTable = ({ songs }) => {
                           },
                         },
                       }}
-                      // onClick={() => handlePlay()}
-                      onClick={async () => {
-                        console.log(song.id)
-                        // const favouriteSong = await prisma.favourite.create({
-                        //   data: {
-                        //     songId: song.id,
-                        //     song: song,
-                        //     createdAt: Date.now()
-                        //   },
-                        // })
-                      }}
+                      onClick={(e) => handleFavourite(e, song)}
                     />
                   </Td>
                   <Td borderRadius="0 8px 8px 0">
