@@ -47,7 +47,7 @@ const musicMenu = [
   {
     name: 'Favourites',
     icon: MdFavorite,
-    route: '/favorites',
+    route: '/favourites',
   },
 ]
 
