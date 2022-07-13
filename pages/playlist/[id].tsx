@@ -24,8 +24,8 @@ const Playlist = ({ playlist }) => {
   return (
     <GradientLayout
       color={color}
-      // children={undefined}
       image={`https://picsum.photos/400?random=${playlist.id}`}
+      icon={null}
       subtitle="playlist"
       title={playlist.name}
       description={`${playlist.songs.length} songs`}

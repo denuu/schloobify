@@ -6,10 +6,11 @@ const Favourites = () => {
   return (
     <GradientLayout
       color="green"
-      subtitle="<3"
+      subtitle="playlist"
       title="Favourites"
       description="The ones you've clicked the heart button on"
-      image=""
+      image={null}
+      icon={MdFavorite}
       roundImage={false}
     >
       <Box color="white" paddingY="40px">

@@ -1,10 +1,11 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
-import { Image } from '@chakra-ui/react' // Better for avatars instead of image optimization.
+import { Icon, Image } from '@chakra-ui/react' // Better for avatars instead of image optimization.
 
 const GradientLayout = ({
   color,
   children,
   image,
+  icon,
   subtitle,
   title,
   description,
@@ -18,12 +19,17 @@ const GradientLayout = ({
     >
       <Flex bg={`${color}.600`} padding="40px" align="end">
         <Box padding="20px">
-          <Image
-            boxSize="160px"
-            boxShadow="2xl"
-            src={image}
-            borderRadius={roundImage ? '100%' : '3px'}
-          />
+          {image && (
+            <Image
+              boxSize="160px"
+              boxShadow="2xl"
+              src={image}
+              borderRadius={roundImage ? '100%' : '3px'}
+            />
+          )}
+          {icon && (
+            <Icon as={icon} color="white" width="160px" height="160px" />
+          )}
         </Box>
         <Box padding="20px" lineHeight="40px" color="white">
           <Text fontSize="x-small" fontWeight="bold" casing="uppercase">
