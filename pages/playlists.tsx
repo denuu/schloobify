@@ -24,7 +24,7 @@ const Playlists = () => {
           </Text>
           <Text fontSize="md">Only visible to you</Text>
         </Box>
-        <Flex>
+        <Flex display="inline-flex" flexFlow="row wrap" gap="20px 0px">
           {playlists.map((playlist) => (
             <Box paddingX="10px" width="20%" key={playlist.id}>
               <Box bg="grey.900" borderRadius="4px" padding="15px">
