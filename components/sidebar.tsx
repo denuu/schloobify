@@ -17,6 +17,7 @@ import {
   MdLibraryMusic,
   MdPlaylistAdd,
   MdFavorite,
+  MdPlaylistPlay,
 } from 'react-icons/md'
 import { usePlaylist } from '../lib/hooks'
 
@@ -48,6 +49,11 @@ const musicMenu = [
     name: 'Favourites',
     icon: MdFavorite,
     route: '/favourites',
+  },
+  {
+    name: 'Playlists',
+    icon: MdPlaylistPlay,
+    route: '/playlists',
   },
 ]
 
