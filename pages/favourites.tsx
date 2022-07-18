@@ -13,9 +13,7 @@ const Favourites = () => {
       icon={MdFavorite}
       roundImage={false}
     >
-      <Box color="white" paddingY="40px">
-        Under construction
-      </Box>
+      <Box color="white">Under construction</Box>
     </GradientLayout>
   )
 }
